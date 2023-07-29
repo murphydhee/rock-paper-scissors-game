@@ -17,7 +17,7 @@
 
 <!--    Main-->
     <main class="container mx-auto p-6 flex-1" >
-      <div v-if="choice === null" class="flex items-center justify-center -mx-6">
+      <div v-if="userChoice === null" class="flex items-center justify-center -mx-6">
 <!--        Buttons-->
         <button @click="play('rock')" class="bg-white rounded-full shadow-lg w-64 p-12 mx-6 transition-colors duration-300 hover:bg-blue-500">
           <img src="./assets/RockIcon.svg" alt="Rock" class="w-full" />
@@ -32,7 +32,7 @@
       <div v-else>
 <!--        Results-->
         <div class="text-3xl mb-4">
-          You picked <span class="text-pink-500"> {{ choice }}</span>
+          You picked <span class="text-pink-500"> {{ userChoice }}</span>
         </div>
 
         <div class="text-3xl mb-4">
@@ -67,7 +67,7 @@ const wins = ref(0);
 const losses = ref(0);
 const draws = ref(0);
 
-const choice = ref(null);
+const userChoice = ref(null);
 const computerChoice = ref(null);
 const verdict = ref(null);
 
@@ -98,7 +98,7 @@ const winPercentage = computed(() => {
 
 // Game Logic
 const play = (c) => {
-  choice.value = c;
+  userChoice.value = c;
 
   const choices = ["rock", "paper", "scissors"];
   const random = Math.floor(Math.random() * choices.length);
@@ -137,7 +137,7 @@ const LoadGame = () => {
 
 // Reset Game Round
 const ResetRound = () => {
-  choice.value = null
+  userChoice.value = null
   computerChoice.value = null
   verdict.value = null
 }
